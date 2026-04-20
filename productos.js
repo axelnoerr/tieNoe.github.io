@@ -36,6 +36,13 @@ function mostrarProductos(lista) {
 function agregarAlCarrito(nombre, precio) {
     carrito.push({ nombre, precio });
     actualizarCarrito();
+
+    const carritoBox = document.getElementById("carrito");
+    carritoBox.classList.add("animar");
+
+    setTimeout(() => {
+        carritoBox.classList.remove("animar");
+    }, 300);
 }
 
 function actualizarCarrito() {
