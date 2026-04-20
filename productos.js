@@ -106,11 +106,13 @@ function abrirModal(nombre, precio, imagen) {
 function cerrarModal() {
     document.getElementById("modal").style.display = "none";
 }
-document.getElementById("btnAgregarModal").addEventListener("click", () => {
-    if (productoActual) {
-        agregarAlCarrito(productoActual.nombre, productoActual.precio);
-        cerrarModal();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("btnAgregarModal").addEventListener("click", () => {
+        if (productoActual) {
+            agregarAlCarrito(productoActual.nombre, productoActual.precio);
+            cerrarModal();
+        }
+    });
 });
 
 function enviarWhatsApp() {
@@ -161,6 +163,5 @@ filtroPrecio.addEventListener("input", () => {
 });
 buscador.addEventListener("input", filtrar);
 
-// Inicial
 mostrarProductos(productos);
 valorPrecio.textContent = "$" + filtroPrecio.value;
