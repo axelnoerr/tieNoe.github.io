@@ -22,6 +22,7 @@ function mostrarProductos(lista) {
         div.classList.add("producto");
 
         div.innerHTML = `
+        <div onclick="abrirModal('${p.nombre}', ${p.precio}, '${p.imagen}')">
          <img src="${p.imagen}" alt="${p.nombre}"> 
         <h3>${p.nombre}</h3>
             <p>$${p.precio}</p>
@@ -71,6 +72,27 @@ function eliminarProducto(index) {
     carrito.splice(index, 1);
     actualizarCarrito();
 }
+let productoActual = null;
+
+function abrirModal(nombre, precio, imagen) {
+    document.getElementById("modal").style.display = "flex";
+
+    document.getElementById("modal-img").src = imagen;
+    document.getElementById("modal-nombre").textContent = nombre;
+    document.getElementById("modal-precio").textContent = "$" + precio;
+
+    productoActual = { nombre, precio };
+}
+
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
+document.getElementById("btnAgregarModal").addEventListener("click", () => {
+    if (productoActual) {
+        agregarAlCarrito(productoActual.nombre, productoActual.precio);
+        cerrarModal();
+    }
+});
 
 function enviarWhatsApp() {
     if (carrito.length === 0) {
