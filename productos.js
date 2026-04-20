@@ -21,15 +21,22 @@ function mostrarProductos(lista) {
         const div = document.createElement("div");
         div.classList.add("producto");
 
-        div.innerHTML = `
-        <div onclick="abrirModal('${p.nombre}', ${p.precio}, '${p.imagen}')">
-         <img src="${p.imagen}" alt="${p.nombre}"> 
-        <h3>${p.nombre}</h3>
+        const contenido = document.createElement("div");
+
+        contenido.onclick = () => abrirModal(p.nombre, p.precio, p.imagen);
+
+        contenido.innerHTML = `
+            <img src="${p.imagen}">
+            <h3>${p.nombre}</h3>
             <p>$${p.precio}</p>
-            <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">
-                Agregar
-            </button>
         `;
+
+        const boton = document.createElement("button");
+        boton.textContent = "Agregar";
+        boton.onclick = () => agregarAlCarrito(p.nombre, p.precio);
+
+        div.appendChild(contenido);
+        div.appendChild(boton);
 
         contenedor.appendChild(div);
     });
