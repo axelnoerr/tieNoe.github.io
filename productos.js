@@ -114,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-document.getElementById("modal").addEventListener("click", (e) => {
-    if (e.target.id === "modal") {
+document.getElementById("modal").addEventListener("click", function(e) {
+    if (e.target === this) {
         cerrarModal();
     }
 });
