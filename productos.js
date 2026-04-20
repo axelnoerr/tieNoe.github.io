@@ -116,7 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 window.addEventListener("click", (e) => {
     const modal = document.getElementById("modal");
-    if (e.target === modal) {
+    const contenido = document.querySelector(".modal-contenido");
+
+    if (modal.style.display === "flex" && !contenido.contains(e.target)) {
         cerrarModal();
     }
 });
