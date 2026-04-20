@@ -114,6 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+window.addEventListener("click", (e) => {
+    const modal = document.getElementById("modal");
+    if (e.target === modal) {
+        cerrarModal();
+    }
+});
 
 function enviarWhatsApp() {
     if (carrito.length === 0) {
