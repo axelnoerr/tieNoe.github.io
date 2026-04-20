@@ -23,17 +23,29 @@ function mostrarProductos(lista) {
 
         const contenido = document.createElement("div");
 
-        contenido.onclick = () => abrirModal(p.nombre, p.precio, p.imagen);
+        contenido.addEventListener("click", () => {
+            abrirModal(p.nombre, p.precio, p.imagen);
+        });
 
-        contenido.innerHTML = `
-            <img src="${p.imagen}">
-            <h3>${p.nombre}</h3>
-            <p>$${p.precio}</p>
-        `;
+        const img = document.createElement("img");
+        img.src = p.imagen;
+
+        const nombre = document.createElement("h3");
+        nombre.textContent = p.nombre;
+
+        const precio = document.createElement("p");
+        precio.textContent = "$" + p.precio;
+
+        contenido.appendChild(img);
+        contenido.appendChild(nombre);
+        contenido.appendChild(precio);
 
         const boton = document.createElement("button");
         boton.textContent = "Agregar";
-        boton.onclick = () => agregarAlCarrito(p.nombre, p.precio);
+        boton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            agregarAlCarrito(p.nombre, p.precio);
+        });
 
         div.appendChild(contenido);
         div.appendChild(boton);
