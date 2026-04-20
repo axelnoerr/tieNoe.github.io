@@ -45,14 +45,23 @@ function actualizarCarrito() {
     lista.innerHTML = "";
     let suma = 0;
 
-    carrito.forEach(p => {
+    carrito.forEach((p, index) => {
         const li = document.createElement("li");
-        li.textContent = `${p.nombre} - $${p.precio}`;
+
+        li.innerHTML = `
+            ${p.nombre} - $${p.precio}
+            <button onclick="eliminarProducto(${index})">❌</button>
+        `;
+
         lista.appendChild(li);
         suma += p.precio;
     });
 
     total.textContent = "Total: $" + suma;
+}
+function eliminarProducto(index) {
+    carrito.splice(index, 1);
+    actualizarCarrito();
 }
 
 function enviarWhatsApp() {
