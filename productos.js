@@ -3,6 +3,7 @@ const productos = [
     { nombre: "Playera Blanca", categoria: "playera", precio: 350, imagen: "img/play-blan-gym.jpg" },
     { nombre: "Pantalón Jeans", categoria: "pantalon", precio: 800, imagen: "img/jean-gym.jpg" },
     { nombre: "Sudadera", categoria: "playera", precio: 600, imagen: "img/sud.jpg" }
+    {nombre: "Gorra Negra",categoria: "gorra",precio: 250,imagen: "img/gorra.jpg"}
 ];
 
 let carrito = [];
