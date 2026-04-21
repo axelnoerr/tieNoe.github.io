@@ -1,9 +1,24 @@
 const productos = [
-    { nombre: "Playera Negra", categoria: "playera", precio: 300, imagen: "img/playera-gym.jpg" },
-    { nombre: "Playera Blanca", categoria: "playera", precio: 350, imagen: "img/play-blan-gym.jpg" },
-    { nombre: "Pantalón Jeans", categoria: "pantalon", precio: 800, imagen: "img/jean-gym.jpg" },
-    { nombre: "Sudadera", categoria: "playera", precio: 600, imagen: "img/sud.jpg" },
-    {nombre: "Gorra Negra",categoria: "gorras",precio: 250,imagen: "img/gorra.jpg"}
+    { nombre: "Playera Negra",
+     categoria: "playera",
+     precio: 300, 
+     imagen: "img/playera-gym.jpg" },
+    { nombre: "Playera Blanca",
+     categoria: "playera",
+     precio: 350,
+     imagen: "img/play-blan-gym.jpg" },
+    { nombre: "Pantalón Jeans",
+     categoria: "pantalon",
+     precio: 800, 
+     imagen: "img/jean-gym.jpg" },
+    { nombre: "Sudadera", 
+     categoria: "playera", 
+     precio: 600,
+     imagen: "img/sud.jpg" },
+    {nombre: "Gorra Negra",
+     categoria: "gorras",
+     precio: 250,
+     imagen: "img/gorra.jpg"}
 ];
 
 let carrito = [];
