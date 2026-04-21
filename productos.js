@@ -2,7 +2,11 @@ const productos = [
     { nombre: "Playera Negra",
      categoria: "playera",
      precio: 300, 
-     imagen: "img/playera-gym.jpg" },
+     imagen: "img/playera-gym.jpg",
+     imagenes: ["img/playera-gym.jpg", "img/playera-gym2.jpg"],
+    descripcion: "Playera ideal para entrenar",
+     tallas: ["S", "M", "L"]
+    },
     { nombre: "Playera Blanca",
      categoria: "playera",
      precio: 350,
