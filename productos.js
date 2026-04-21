@@ -113,36 +113,47 @@ let productoActual = null;
 
 function abrirModal(nombre, precio, imagen) {
     const producto = productos.find(p => p.nombre === nombre);
+    const modal = document.getElementById("modal");
 
-    document.getElementById("modal").style.display = "flex";
+    modal.style.display = "flex";
+    modal.style.pointerEvents = "auto";
 
     document.getElementById("modal-img-principal").src = producto.imagen;
     document.getElementById("modal-nombre").textContent = producto.nombre;
     document.getElementById("modal-precio").textContent = "$" + producto.precio;
-    document.getElementById("modal-desc").textContent = producto.descripcion;
+    document.getElementById("modal-desc").textContent = producto.descripcion || "";
 
     const galeria = document.getElementById("galeria");
     galeria.innerHTML = "";
 
-    producto.imagenes.forEach(img => {
-        const mini = document.createElement("img");
-        mini.src = img;
+    if (producto.imagenes && producto.imagenes.length > 0) {
+        producto.imagenes.forEach(img => {
+            const mini = document.createElement("img");
+            mini.src = img;
 
-        mini.onclick = () => {
-            document.getElementById("modal-img-principal").src = img;
-        };
+            mini.onclick = () => {
+                document.getElementById("modal-img-principal").src = img;
+            };
 
-        galeria.appendChild(mini);
-    });
+            galeria.appendChild(mini);
+        });
+    }
     const select = document.getElementById("modal-talla");
     select.innerHTML = "";
 
-    producto.tallas.forEach(t => {
+    if (producto.tallas && producto.tallas.length > 0) {
+        producto.tallas.forEach(t => {
+            const option = document.createElement("option");
+            option.value = t;
+            option.textContent = t;
+            select.appendChild(option);
+        });
+    } else {
         const option = document.createElement("option");
-        option.value = t;
-        option.textContent = t;
+        option.value = "Unitalla";
+        option.textContent = "Unitalla";
         select.appendChild(option);
-    });
+    }
 
     productoActual = producto;
 
@@ -150,8 +161,12 @@ function abrirModal(nombre, precio, imagen) {
 }
 
 function cerrarModal() {
-    document.getElementById("modal").style.display = "none";
-     document.body.style.overflow = "auto";
+    const modal = document.getElementById("modal");
+
+    modal.style.display = "none";
+    modal.style.pointerEvents = "none";
+
+    document.body.style.overflow = "auto";
 }
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnAgregarModal").addEventListener("click", () => {
