@@ -24,9 +24,18 @@ header input {
     padding: 10px;
 }
 
-.contenedor {
-    display: grid;
-    grid-template-columns: 220px 1fr;
+@media (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        order: 2; /* se va abajo */
+    }
+
+    main {
+        order: 1;
+    }
 }
 
 aside {
