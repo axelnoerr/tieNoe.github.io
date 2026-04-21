@@ -61,11 +61,10 @@ function mostrarProductos(lista) {
 
         const boton = document.createElement("button");
         boton.textContent = "Agregar";
-        boton.addEventListener("click", (e) => {
-            e.stopPropagation();
-            agregarAlCarrito(p.nombre, p.precio);
-        });
-
+       boton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    abrirModal(p.nombre, p.precio, p.imagen);
+});
         div.appendChild(contenido);
         div.appendChild(boton);
 
