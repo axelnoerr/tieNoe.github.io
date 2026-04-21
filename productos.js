@@ -113,13 +113,41 @@ function eliminarProducto(index) {
 let productoActual = null;
 
 function abrirModal(nombre, precio, imagen) {
+    const producto = productos.find(p => p.nombre === nombre);
+
     document.getElementById("modal").style.display = "flex";
 
-    document.getElementById("modal-img").src = imagen;
-    document.getElementById("modal-nombre").textContent = nombre;
-    document.getElementById("modal-precio").textContent = "$" + precio;
+    document.getElementById("modal-img-principal").src = producto.imagen;
+    document.getElementById("modal-nombre").textContent = producto.nombre;
+    document.getElementById("modal-precio").textContent = "$" + producto.precio;
+    document.getElementById("modal-desc").textContent = producto.descripcion;
 
-    productoActual = { nombre, precio };
+    const galeria = document.getElementById("galeria");
+    galeria.innerHTML = "";
+
+    producto.imagenes.forEach(img => {
+        const mini = document.createElement("img");
+        mini.src = img;
+
+        mini.onclick = () => {
+            document.getElementById("modal-img-principal").src = img;
+        };
+
+        galeria.appendChild(mini);
+    });
+    const select = document.getElementById("modal-talla");
+    select.innerHTML = "";
+
+    producto.tallas.forEach(t => {
+        const option = document.createElement("option");
+        option.value = t;
+        option.textContent = t;
+        select.appendChild(option);
+    });
+
+    productoActual = producto;
+
+    document.body.style.overflow = "hidden";
 }
 
 function cerrarModal() {
@@ -128,7 +156,15 @@ function cerrarModal() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnAgregarModal").addEventListener("click", () => {
         if (productoActual) {
-            agregarAlCarrito(productoActual.nombre, productoActual.precio);
+            const talla = document.getElementById("modal-talla").value;
+
+carrito.push({
+    nombre: productoActual.nombre,
+    precio: productoActual.precio,
+    talla: talla
+});
+
+actualizarCarrito();
             cerrarModal();
         }
     });
