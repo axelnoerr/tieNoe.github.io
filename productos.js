@@ -151,6 +151,7 @@ function abrirModal(nombre, precio, imagen) {
 
 function cerrarModal() {
     document.getElementById("modal").style.display = "none";
+     document.body.style.overflow = "auto";
 }
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnAgregarModal").addEventListener("click", () => {
