@@ -183,3 +183,22 @@ border-radius: 10px;
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+#galeria {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+#galeria img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
+
+#galeria img:hover {
+    border: 2px solid black;
+}
