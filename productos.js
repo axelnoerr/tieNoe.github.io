@@ -3,8 +3,7 @@ const productos = [
      categoria: "playera",
      precio: 300, 
      imagen: "img/playera-gym.jpg",
-     imagenes: ["img/playera-gym.jpg", "img/playera-gym2.jpg"
-               "img/playeragym3.jpg"],
+     imagenes: ["img/playera-gym.jpg", "img/playera-gym2.jpg"],
     descripcion: "Playera ideal para entrenar",
      tallas: ["S", "M", "L"]
     },
