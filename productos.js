@@ -96,9 +96,9 @@ function actualizarCarrito() {
         const li = document.createElement("li");
 
         li.innerHTML = `
-            ${p.nombre} - $${p.precio}
-            <button onclick="eliminarProducto(${index})">❌</button>
-        `;
+    ${p.nombre} (${p.talla}) - $${p.precio}
+    <button onclick="eliminarProducto(${index})">❌</button>
+`;
 
         lista.appendChild(li);
         suma += p.precio;
@@ -184,8 +184,8 @@ function enviarWhatsApp() {
     let mensaje = "Hola, quiero pedir:%0A";
 
     carrito.forEach(p => {
-        mensaje += `- ${p.nombre} ($${p.precio})%0A`;
-    });
+    mensaje += `- ${p.nombre} (${p.talla}) ($${p.precio})%0A`;
+   });
 
     let total = carrito.reduce((acc, p) => acc + p.precio, 0);
     mensaje += `%0ATotal: $${total}`;
